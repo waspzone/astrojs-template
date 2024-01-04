@@ -25,13 +25,16 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "./astro-starter"
+  BUILD_PATH: "."
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
     steps:
+      - name: Move to build repository
+        run: |
+          cd astro-starter
       - name: Checkout
         uses: actions/checkout@v4
       - name: Detect package manager
